@@ -1,4 +1,4 @@
-use std::io;
+use std::{f64::consts::PI, io};
 
 fn main() {
     println!("Input a number");
@@ -12,10 +12,18 @@ fn main() {
             "/" => result = div(result),
             "+" => result = add(result),
             "-" => result = sub(result),
+            "%" => result = modu(result),
+            "^" => result = power(result),
+            "!" => result = fak(result),
+            "rt" => result = root(result),
+            "log" => result = log(result),
+            "sin" => result = sin(result),
+            "cos" => result = cos(result),
+            "tan" => result = tan(result),
             "q" => break,
+            "=" => println!("{}", result),
             _ => println!("Invalid operation"),
         };
-        println!("{}", result)
     }
 }
 
@@ -67,4 +75,51 @@ fn div(num1: f64) -> f64 {
     println!("Input a number");
     let num2 = get_number_input();
     num1 / num2
+}
+
+fn modu(num1: f64) -> f64 {
+    println!("Input a number");
+    let num2 = get_number_input();
+    num1 % num2
+}
+
+fn root(num1: f64) -> f64 {
+    println!("Input a number");
+    let num2 = get_number_input();
+    num1.powf(1.0/num2)
+}
+
+fn power(num1: f64) -> f64 {
+    println!("Input a number");
+    let num2 = get_number_input();
+    num1.powf(num2)
+}
+
+fn fak(mut num1: f64) -> f64 {
+    if num1 == 0.0 {
+        0.0
+    } else {
+        for num in 1..num1 as i64 {
+            num1 = num1 * num as f64;
+        }
+        return num1;
+    }
+}
+
+fn log(num1: f64) -> f64 {
+    println!("Input a number");
+    let num2 = get_number_input();
+    num1.ln() / num2.ln()
+}
+
+fn sin(num1: f64) -> f64 {
+    (num1 * PI / 180.0).sin()
+}
+
+fn cos(num1: f64) -> f64 {
+    (num1 * PI / 180.0).cos()
+}
+
+fn tan(num1: f64) -> f64 {
+    (num1 * PI / 180.0).tan()
 }
