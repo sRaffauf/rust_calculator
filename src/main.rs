@@ -22,6 +22,7 @@ fn main() {
             "tan" => result = tan(result),
             "q" => break,
             "=" => println!("{}", result),
+	    "ac" => result = 0.0,
             _ => println!("Invalid operation"),
         };
     }
